@@ -1,4 +1,4 @@
-# transform 优化 AST
+# transform
 
 熟悉 Vue 2.x 版本源码的同学应该都知道它的 `compile` 阶段是没有 `transform` 过程的处理。而 `transform` 恰恰是整个 Vue 3 提高 `VNode` 更新性能实现的基础。因为，在这个阶段，会对 `baseCompiler` 后生成的 AST Element 打上优化标识 `patchFlag`，以及 `isBlock` 的判断。
 
@@ -9,7 +9,7 @@
 - 静态节点 `transform` 应用，即节点不含有插值、指令、props、动态样式的绑定等。
 - 动态节点 `transform` 应用，即节点含有插值、指令、props、动态样式的绑定等。
 
-## 静态节点 transform 应用
+## 静态节点 transform
 
 那么，首先是静态节点 `transform` 应用。对于上面我们说到的这个栗子，静态节点就是 `<div>hi vue3</div>`这部分。而它在没有进行 `transformText` 之前，它对应的 AST 会是这样：
 
@@ -101,7 +101,7 @@ export const transformText: NodeTransform = (node, context) => {
 }
 ```
 
-## 动态节点 transform 应用
+## 动态节点 transform
 
 接下来是动态节点 `transform` 应用。这里，我们的动态节点是 `<div>{{msg}}</div>`。它在 `baseParse` 后对应的 AST 会是这样：
 

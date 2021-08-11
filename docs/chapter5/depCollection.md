@@ -1,4 +1,6 @@
-# 依赖收集（track）
+# 依赖收集
+
+> TODO: 待完善
 
 ## get
 
@@ -70,14 +72,14 @@ function createGetter(isReadonly = false, shallow = false) {
 此时属于第二阶段，所以我们会命中 `get` 的最后逻辑：
 
 ```javascript
-track(target, "get" /* GET */, key)
+track(target, "get" /* GET */, key);
 return isObject(res)
   ? isReadonly
     ? // need to lazy access readonly and reactive here to avoid
       // circular dependency
       readonly(res)
     : reactive(res)
-  : res
+  : res;
 ```
 
 可以看到，首先会调用 `track()` 函数，进行**依赖收集**，而 `track()` 函数定义如下：
@@ -85,26 +87,26 @@ return isObject(res)
 ```javascript
 function track(target, type, key) {
   if (!shouldTrack || activeEffect === undefined) {
-    return
+    return;
   }
-  let depsMap = targetMap.get(target)
+  let depsMap = targetMap.get(target);
   if (depsMap === void 0) {
-    targetMap.set(target, (depsMap = new Map()))
+    targetMap.set(target, (depsMap = new Map()));
   }
-  let dep = depsMap.get(key)
+  let dep = depsMap.get(key);
   if (dep === void 0) {
-    depsMap.set(key, (dep = new Set()))
+    depsMap.set(key, (dep = new Set()));
   }
   if (!dep.has(activeEffect)) {
-    dep.add(activeEffect)
-    activeEffect.deps.push(dep)
+    dep.add(activeEffect);
+    activeEffect.deps.push(dep);
     if (process.env.NODE_ENV !== "production" && activeEffect.options.onTrack) {
       activeEffect.options.onTrack({
         effect: activeEffect,
         target,
         type,
         key,
-      })
+      });
     }
   }
 }
@@ -114,7 +116,7 @@ function track(target, type, key) {
 
 ```javascript
 if (depsMap === void 0) {
-  targetMap.set(target, (depsMap = new Map()))
+  targetMap.set(target, (depsMap = new Map()));
 }
 ```
 
@@ -123,9 +125,9 @@ if (depsMap === void 0) {
 然后，对 `count` 属性初始化一个 `Map` 插入到 `data` 选项中，即：
 
 ```javascript
-let dep = depsMap.get(key)
+let dep = depsMap.get(key);
 if (dep === void 0) {
-  depsMap.set(key, (dep = new Set()))
+  depsMap.set(key, (dep = new Set()));
 }
 ```
 
@@ -133,8 +135,8 @@ if (dep === void 0) {
 
 ```javascript
 if (!dep.has(activeEffect)) {
-  dep.add(activeEffect)
-  activeEffect.deps.push(dep)
+  dep.add(activeEffect);
+  activeEffect.deps.push(dep);
   // 最后的分支逻辑，我们这次并不会命中
 }
 ```
@@ -148,7 +150,7 @@ return isObject(res)
       // circular dependency
       readonly(res)
     : reactive(res)
-  : res
+  : res;
 ```
 
 ## 总结

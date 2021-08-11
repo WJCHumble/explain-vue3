@@ -1,4 +1,6 @@
-# 派发更新（trigger）
+# trigger
+
+> TODO: 待完善
 
 ## set
 
@@ -34,7 +36,7 @@ function set(target, key, value, receiver) {
 
 ```javascript
 function toRaw(observed) {
-  return reactiveToRaw.get(observed) || readonlyToRaw.get(observed) || observed
+  return reactiveToRaw.get(observed) || readonlyToRaw.get(observed) || observed;
 }
 ```
 
@@ -58,7 +60,7 @@ function createReactiveObject(target, toProxy, toRaw, baseHandlers, collectionHa
 
 - 或者该属性发生变化，触发 `triger()` 函数对应的 `set`
 
-### trigger
+## trigger
 
 首先，我们先看一下 `trigger()` 函数的定义：
 
@@ -132,13 +134,13 @@ function scheduleRun(effect, target, type, key, extraInfo) {
       target,
       key,
       type,
-    }
-    effect.options.onTrigger(extraInfo ? extend(event, extraInfo) : event)
+    };
+    effect.options.onTrigger(extraInfo ? extend(event, extraInfo) : event);
   }
   if (effect.options.scheduler !== void 0) {
-    effect.options.scheduler(effect)
+    effect.options.scheduler(effect);
   } else {
-    effect()
+    effect();
   }
 }
 ```
@@ -150,8 +152,8 @@ function scheduleRun(effect, target, type, key, extraInfo) {
 ```javascript
 function queueJob(job) {
   if (!queue.includes(job)) {
-    queue.push(job)
-    queueFlush()
+    queue.push(job);
+    queueFlush();
   }
 }
 ```
@@ -163,8 +165,8 @@ function queueJob(job) {
 ```javascript
 function queueFlush() {
   if (!isFlushing && !isFlushPending) {
-    isFlushPending = true
-    nextTick(flushJobs)
+    isFlushPending = true;
+    nextTick(flushJobs);
   }
 }
 ```
@@ -173,25 +175,25 @@ function queueFlush() {
 
 ```javascript
 function flushJobs(seen) {
-  isFlushPending = false
-  isFlushing = true
-  let job
+  isFlushPending = false;
+  isFlushing = true;
+  let job;
   if (process.env.NODE_ENV !== "production") {
-    seen = seen || new Map()
+    seen = seen || new Map();
   }
   while ((job = queue.shift()) !== undefined) {
     if (job === null) {
-      continue
+      continue;
     }
     if (process.env.NODE_ENV !== "production") {
-      checkRecursiveUpdates(seen, job)
+      checkRecursiveUpdates(seen, job);
     }
-    callWithErrorHandling(job, null, 12 /* SCHEDULER */)
+    callWithErrorHandling(job, null, 12 /* SCHEDULER */);
   }
-  flushPostFlushCbs(seen)
-  isFlushing = false
+  flushPostFlushCbs(seen);
+  isFlushing = false;
   if (queue.length || postFlushCbs.length) {
-    flushJobs(seen)
+    flushJobs(seen);
   }
 }
 ```

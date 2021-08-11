@@ -1,4 +1,4 @@
-# 基本介绍
+## 基本介绍
 
 > 值得一提的是在 `Vue 3.0` 中没有了`watcher` 的概念，取而代之的是 `effect` ，所以接下来会接触很多和 `effect` 相关的函数
 
@@ -7,10 +7,10 @@
 **main.js 项目入口**
 
 ```javascript
-import { createApp } from "vue"
-import App from "./App.vue"
+import { createApp } from "vue";
+import App from "./App.vue";
 
-createApp(App).mount("#app")
+createApp(App).mount("#app");
 ```
 
 **App.vue 组件**
@@ -91,13 +91,13 @@ const setupRenderEffect = (instance, initialVNode, container, anchor, parentSusp
 ```javascript
 function effect(fn, options = EMPTY_OBJ) {
   if (isEffect(fn)) {
-    fn = fn.raw
+    fn = fn.raw;
   }
-  const effect = createReactiveEffect(fn, options)
+  const effect = createReactiveEffect(fn, options);
   if (!options.lazy) {
-    effect()
+    effect();
   }
-  return effect
+  return effect;
 }
 ```
 
@@ -106,14 +106,14 @@ function effect(fn, options = EMPTY_OBJ) {
 ```javascript
 function createReactiveEffect(fn, options) {
   const effect = function reactiveEffect(...args) {
-    return run(effect, fn, args)
-  }
-  effect._isEffect = true
-  effect.active = true
-  effect.raw = fn
-  effect.deps = []
-  effect.options = options
-  return effect
+    return run(effect, fn, args);
+  };
+  effect._isEffect = true;
+  effect.active = true;
+  effect.raw = fn;
+  effect.deps = [];
+  effect.options = options;
+  return effect;
 }
 ```
 
@@ -130,19 +130,19 @@ function createReactiveEffect(fn, options) {
 ```javascript
 function run(effect, fn, args) {
   if (!effect.active) {
-    return fn(...args)
+    return fn(...args);
   }
   if (!effectStack.includes(effect)) {
-    cleanup(effect)
+    cleanup(effect);
     try {
-      enableTracking()
-      effectStack.push(effect)
-      activeEffect = effect
-      return fn(...args)
+      enableTracking();
+      effectStack.push(effect);
+      activeEffect = effect;
+      return fn(...args);
     } finally {
-      effectStack.pop()
-      resetTracking()
-      activeEffect = effectStack[effectStack.length - 1]
+      effectStack.pop();
+      resetTracking();
+      activeEffect = effectStack[effectStack.length - 1];
     }
   }
 }
@@ -156,8 +156,8 @@ function run(effect, fn, args) {
 
 ```javascript
 function enableTracking() {
-  trackStack.push(shouldTrack)
-  shouldTrack = true
+  trackStack.push(shouldTrack);
+  shouldTrack = true;
 }
 ```
 
