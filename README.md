@@ -1,8 +1,4 @@
-### Vue3 源码解读
-
-在线阅读：[https://wjchumble.github.io/explain-vue3/chapter1/](https://wjchumble.github.io/explain-vue3/chapter1/)
-
-### 关于本书
+### | 关于本书
 
 你好，我是五柳，这是我写的一本关于 Vue3 源码的电子书，目前处于写作中（WIP，Work in progress）。写作的初衷可以说是兴趣使然。因为，曾经读的学校和专业的缘故，平时缺少交流技术的朋友。所以，我很早就开始写博客，这个过程也可以帮助我发现在学习技术过程中存在的不足，所获良多。
 
@@ -14,7 +10,9 @@
 
 此外，如果你觉得通过阅读它可以给你带来收获的话，**可以点个 Star**，这也会成为我坚持写作的动力，非常感谢～
 
-### 联系我
+阅读地址：[https://wjchumble.github.io/explain-vue3/chapter1/](https://wjchumble.github.io/explain-vue3/chapter1/)
+
+### | 联系我
 
 微信：fewuliu
 
