@@ -14,6 +14,6 @@ git add -A
 git commit -m 'deploy'
 
 # 如果发布到 https://<USERNAME>.github.io  填写你刚刚创建的仓库地址
-git push -f https://github.com/WJCHumble/explain-vue3.git main:gh-pages
+git push -f https://github.com/WJCHumble/explain-vue3.git master:gh-pages
 
 cd -
