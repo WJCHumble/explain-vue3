@@ -134,6 +134,19 @@ module.exports = {
             {
               text: "style css variable injection",
               link: "/chapter8/styleCssVars"
+            },
+          ]
+        },
+        {
+          text: "语法糖",
+          children: [
+            {
+              text: "Introduction",
+              link: "/chapter9/"
+            },
+            {
+              text: "ref sugar",
+              link: "/chapter9/ref-sugar"
             }
           ]
         }

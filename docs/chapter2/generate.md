@@ -121,6 +121,13 @@ const { createVNode: _createVNode } = _Vue;
 // 静态提升部分
 const _hoisted_1 = _createVNode("div", null, "hi vue3", -1 /* HOISTED */);
 // render 函数会在这下面
+export function render() => render(_ctx, _cache, $props, $setup, $data, $options) {
+	return (_openBlock(), _createElementBlock(_Fragment, null, [
+    _hoisted_1,
+    _createElementVNode("div", null, _toDisplayString(msg))
+  ], 64 /* STABLE_FRAGMENT */)
+	)
+}
 ```
 
-未完待续...
+## 总结
