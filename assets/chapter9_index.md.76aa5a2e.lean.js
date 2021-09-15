@@ -1,0 +1,1 @@
+import{l as n,f as a,G as s}from"./framework.5c8a4622.js";const e='{"title":"基本介绍","description":"","frontmatter":{},"headers":[{"level":2,"title":"基本介绍","slug":"基本介绍"}],"relativePath":"chapter9/index.md","lastUpdated":1631689824899}',o={},t=s('',6);o.render=function(s,e,o,p,c,r){return n(),a("div",null,[t])};export default o;export{e as __pageData};

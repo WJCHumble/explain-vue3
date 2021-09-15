@@ -1,0 +1,1 @@
+import{l as n,f as s,G as a}from"./framework.5c8a4622.js";const t='{"title":"baseParse","description":"","frontmatter":{},"relativePath":"chapter2/baseParse.md","lastUpdated":1628927998783}',p={},o=a('',9);p.render=function(a,t,p,e,c,l){return n(),s("div",null,[o])};export default p;export{t as __pageData};
